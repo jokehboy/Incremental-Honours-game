@@ -155,8 +155,8 @@ public class GameController : MonoBehaviour
     public void GameText_Upgrades_Update() //Set and update what text should appear on upgrade buttons
     {
         
-        coinsPerSecond_Upgrade_Text_Cost.text = UpdateNotation(theCost_CPS, "F0") + " C";
-        coinsPerSecond_Upgrade_Text_Amount.text = "+" + (data.coinsPerSecond_Amount * data.production_multiplier).ToString("F3") + "C/s";
+        coinsPerSecond_Upgrade_Text_Cost.text = UpdateNotation(theCost_CPS, "F0");
+        coinsPerSecond_Upgrade_Text_Amount.text = "+" + (data.coinsPerSecond_Amount * data.production_multiplier).ToString("F3") + " c/s";
         coinsPerSecond_Upgrade_Text_CurrentLevel.text = "LVL: " + data.coinsPerSecond_Level.ToString();
 
         coinsPerClick_Upgrade_Text_Cost.text = UpdateNotation(theCost_CPC, "F0");
@@ -182,7 +182,7 @@ public class GameController : MonoBehaviour
 
     public string UpdateNotation(BigDouble value, string stringFormat)
     {
-        if (value > 1000000)
+        if (value > 1000)
         {
             var exponent = (Floor(Log10(Abs(value))));
             var mantissa = (value / Pow(10, exponent));
