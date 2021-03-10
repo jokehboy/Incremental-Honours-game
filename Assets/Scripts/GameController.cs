@@ -12,6 +12,7 @@ using static BreakInfinity.BigDouble;
 public class PlayerData 
 {
     public BigDouble currency;  //The users currecny count
+    public BigDouble totalCurrency;
 
     //public double coinsPerClick_UpgradeCost;
     public BigDouble coinsPerClick_CurrentCPC;
@@ -28,6 +29,10 @@ public class PlayerData
     public BigDouble production_multiplier;
     public BigDouble production_level_ToGet;
 
+    public BigDouble ach_lvl1;
+    public BigDouble ach_lvl2;
+
+
     public PlayerData()
     {
         FullReset();
@@ -36,7 +41,7 @@ public class PlayerData
     public void FullReset()
     {
         currency = 0;
-
+        totalCurrency = 0;
         coinsPerSecond_Level = 0;
         coinsPerSecond_Amount = 0.1;
 
@@ -44,11 +49,15 @@ public class PlayerData
         coinsPerClick_CPC_Amount = 0.5;
 
         production_level = 0;
+
+        ach_lvl1 = 0;
+        ach_lvl2 = 0;
+            
     }
 
 }
 
-public class GameController : MonoBehaviour 
+public class GameController : MonoBehaviour
 {
     public PlayerData data;
 
@@ -81,7 +90,7 @@ public class GameController : MonoBehaviour
 
 
     public BigDouble theCost_CPS => 10 * Pow(1.07, data.coinsPerSecond_Level);
-    
+
 
     public BigDouble theCost_CPC => 10 * Pow(1.1, data.coinsPerClick_Level);
 
@@ -90,6 +99,13 @@ public class GameController : MonoBehaviour
 
     public TextMeshProUGUI buyUpgradeMaxCount_CPC;
     public TextMeshProUGUI buyUpgradeMaxCount_CPS;
+
+    //Acheivements
+
+    public GameObject acheivementScreen;
+    public List<Acheivement> acheievmentList = new List<Acheivement>();
+
+
 
 
     public bool counting = true;
@@ -100,6 +116,11 @@ public class GameController : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
+        foreach (var obj in acheivementScreen.GetComponentsInChildren<Acheivement>())
+        {
+            acheievmentList.Add(obj);
+        }
+
         SaveSystem.LoadPlayer(ref data);
 
         StartCoroutine(CoinsPerSecond(1.0f));
@@ -109,7 +130,7 @@ public class GameController : MonoBehaviour
 
     public void CanvasGroupActive(bool active, CanvasGroup theGroup)
     {
-        if(active)
+        if (active)
         {
             theGroup.alpha = 1;
             theGroup.interactable = true;
@@ -123,8 +144,8 @@ public class GameController : MonoBehaviour
 
     }
 
-   
-    
+
+
     public void SetvaluesToDefault() //Every single time a new upgrade is created, remember to add it here!!!
     {
         data.currency = 0;
@@ -141,20 +162,20 @@ public class GameController : MonoBehaviour
 
     public void Prestige() //User can spend currecny to reset all production and gain a multiplier for everything overall
     {
-        
+
     }
 
 
     private void FixedUpdate()
     {
-        SaveSystem.SavePlayer(data);
+        //SaveSystem.SavePlayer(data);
     }
 
 
 
     public void GameText_Upgrades_Update() //Set and update what text should appear on upgrade buttons
     {
-        
+
         coinsPerSecond_Upgrade_Text_Cost.text = UpdateNotation(theCost_CPS, "F0");
         coinsPerSecond_Upgrade_Text_Amount.text = "+" + (data.coinsPerSecond_Amount * data.production_multiplier).ToString("F3") + " c/s";
         coinsPerSecond_Upgrade_Text_CurrentLevel.text = "LVL: " + data.coinsPerSecond_Level.ToString();
@@ -196,8 +217,8 @@ public class GameController : MonoBehaviour
 
     public void BuyUpgradeTypes(string upgradeID)
     {
-        
-        switch(upgradeID)
+
+        switch (upgradeID)
         {
             case "CPS_Upgrade_1_Main":
                 {
@@ -280,6 +301,7 @@ public class GameController : MonoBehaviour
 
     public void Update()
     {
+        RunAcheivements();
 
         GameText_Upgrades_Update();
         GameText_Information_Update();
@@ -299,8 +321,43 @@ public class GameController : MonoBehaviour
         data.coinsPerSecond_CurrentCPS = (data.coinsPerSecond_Level * data.coinsPerSecond_Amount) * data.production_multiplier;
         data.coinsPerClick_CurrentCPC = ((data.coinsPerClick_Level * data.coinsPerClick_CPC_Amount) * data.production_multiplier) + 0.5f;
 
+        saveTimer += Time.deltaTime;
 
+        if(!(saveTimer >= 15))return;
+        SaveSystem.SavePlayer(data);
+        saveTimer = 0;
 
+    }
+
+    public float saveTimer;
+
+    private static string[] AcheievementStrings => new string[] { "Current Coins", "Total Coins Collected" };
+    private BigDouble[] AcheivementNumbers => new BigDouble[] { data.currency, data.totalCurrency };
+
+    private void RunAcheivements()
+    {
+        UpdateAcheivements(AcheievementStrings[0], AcheivementNumbers[0], ref data.ach_lvl1, ref acheievmentList[0].fill, ref acheievmentList[0].titles, ref acheievmentList[0].progress);
+        UpdateAcheivements(AcheievementStrings[1], AcheivementNumbers[1], ref data.ach_lvl2, ref acheievmentList[1].fill, ref acheievmentList[1].titles, ref acheievmentList[1].progress);
+    } 
+
+    private void UpdateAcheivements(string name, BigDouble number, ref BigDouble level, ref Image fill, ref TextMeshProUGUI title, ref TextMeshProUGUI progress)
+    {
+        var cap = BigDouble.Pow(10, level);
+
+        title.text = $"{name}\n Current lvl: {level}";
+
+        progress.text = $"{UpdateNotation(number, "F2")} / {UpdateNotation(cap, "F2")}";
+
+        BigDoubleFillAmount(number, cap, fill);
+
+        if (number < cap) return;
+        BigDouble levels = 0;
+        if (number / cap >= 1)
+            levels = Floor(Log10(number / cap)) + 1;
+        level += levels;
+
+       
+                    
     }
 
     public BigDouble BuyUpgradeMaxCount_CPC()
@@ -380,6 +437,7 @@ public class GameController : MonoBehaviour
 
             data.coinsPerSecond = data.coinsPerSecond_CurrentCPS;
             data.currency += data.coinsPerSecond;
+            data.totalCurrency += data.coinsPerSecond;
             yield return new WaitForSeconds(timeBetween);
         }
     }
@@ -388,6 +446,7 @@ public class GameController : MonoBehaviour
     public void MainButton_Click()
     {
         data.currency += data.coinsPerClick_CurrentCPC;
+        data.totalCurrency += data.coinsPerClick_CurrentCPC;
         buttonParticles_script.ButtonClick();
     }
 
