@@ -73,6 +73,9 @@ public class SaveSystem : MonoBehaviour
             json = JsonUtility.ToJson(data);
             ConvertStringToBase64(writer, json);
             writer.Close();
+
+            //PlayerPrefs.SetString("Offline", System.DateTime.Now.ToBinary().ToString());
+            //if(!data.offlineProgCheck)data.offlineProgCheck = true;
         }
 
         backUpCount = (backUpCount + 1) % 5;
