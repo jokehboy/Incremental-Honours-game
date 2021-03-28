@@ -6,6 +6,8 @@ using System;
 using TMPro;
 using BreakInfinity;
 using static BreakInfinity.BigDouble;
+using UnityEngine.Analytics;
+ 
 
 
 [Serializable]
@@ -28,7 +30,7 @@ public class PlayerData
     public BigDouble coinsPerSecond_Amount; //The amount that the CPS will go up on purchase
     public BigDouble coinsPerSecond_CurrentCPS; //The current amount of CPS
 
-    public int production_level;
+    public BigDouble production_level;
     public BigDouble production_multiplier;
     public BigDouble production_level_ToGet;
 
@@ -37,22 +39,45 @@ public class PlayerData
     public BigDouble ach_lvl1;
     public BigDouble ach_lvl2;
 
-    public int standard_Upgrade_lvl_1;
-    public int standard_Upgrade_lvl_2;
-    public int standard_Upgrade_lvl_3;
-    public int standard_Upgrade_lvl_4;
-    public int standard_Upgrade_lvl_5;
-    public int standard_Upgrade_lvl_6;
-    public int standard_Upgrade_lvl_7;
-    public int standard_Upgrade_lvl_8;
-    public int standard_Upgrade_lvl_9;
-    public int standard_Upgrade_lvl_10;
-    public int standard_Upgrade_lvl_11;
+    public int standard_Upgrade_lvl_1; //cpS type 1
+    public int standard_Upgrade_lvl_2; //cpC type 1
+    public int standard_Upgrade_lvl_3; //critical click chance
+    public int standard_Upgrade_lvl_4; //base critical multiplier
+    public int standard_Upgrade_lvl_5; //auto clicker time per click
+    public int standard_Upgrade_lvl_6; //percentage chance of product on click
+    public int standard_Upgrade_lvl_7; //product earned on click
+    public int standard_Upgrade_lvl_8; //cpC tupe 2
+    public int standard_Upgrade_lvl_9; //cpS type 2
+    public int standard_Upgrade_lvl_10; //add button
+    public int standard_Upgrade_lvl_11; //increase cpc and cps
     public int standard_Upgrade_lvl_12;
     public int standard_Upgrade_lvl_13;
     public int standard_Upgrade_lvl_14;
     public int standard_Upgrade_lvl_15;
-                             
+
+    public BigDouble cpc_Upgrade_1_base_amount; //Coins per click base amount upgrade type 1
+    public BigDouble cpc_Upgrade_2_base_amount; //Coins per click base amount upgrade type 2
+
+    public BigDouble cps_Upgrade_1_base_amount; //Coins per second base amount upgrade type 1
+    public BigDouble cps_Upgrade_2_base_amount; //Coins per second base amount upgrade type 2
+
+    public BigDouble cpsAndCpc_Upgrade_base_amount; //Upgrade both cpc and cps base amount
+
+    public float criticalClick_Upgrade_chance_base; //Chance of a click being critical | max percentage 
+    public float criticalClick_Upgrade_Multiplier; //The smallest possible critical click multiplier
+
+    public float autoClicker_Upgrade_speed; //Speed in which the auto clicker clicks (the time between) 
+
+    public float productionClickChance_Upgrade; //Percentage chance that you will earn product upon click | max percentage 
+
+    public float productionEarnedOnClick_Upgrade; //The base amount of product gained on click | max level:
+
+    public int addButton_Upgrade; //Adds another button to the screen, auto click applies, max 8
+
+
+    #region Settings
+    public short notationType;
+    #endregion
 
     #region Production upgrades
     public int prestiege_upg_lvl1;
@@ -60,15 +85,21 @@ public class PlayerData
     public int prestiege_upg_lvl3;
     public int prestiege_upg_lvl4;
     public int prestiege_upg_lvl5;
+    public int prestiege_upg_lvl6;
+    public int prestiege_upg_lvl7;
+    public int prestiege_upg_lvl8;
+    public int prestiege_upg_lvl9;
+    public int prestiege_upg_lvl10;
 
     #endregion
 
     public BigDouble eventTokens;
     public float[] eventCooldown = new float[7];
 
-    //public GameObject[] upgrade_Progression_Array = new GameObject[15];
-    public bool[] unlocked = new bool[15];
-    
+    //public GameObject[] standard_upgrade_Progression_Array = new GameObject[15];
+    public bool[] standard_unlocked = new bool[15];
+    public bool[] production_unlocked = new bool[10];
+
 
 
     public PlayerData()
@@ -97,10 +128,16 @@ public class PlayerData
         for (int i = 0; i < eventCooldown.Length - 1; i++)
             eventCooldown[i] = 0;
 
-        for (int i = 0; i < unlocked.Length; i++)
-            unlocked[i] = false;
+        for (int i = 0; i < standard_unlocked.Length; i++)
+            standard_unlocked[i] = false;
 
-            
+        for(int i = 0; i < production_unlocked.Length; i++)
+            production_unlocked[i] = false;
+
+
+
+
+
     }
 
 }
@@ -122,7 +159,8 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI coinsPerClick_Upgrade_Text_Amount;
     public TextMeshProUGUI coinsPerClick_Upgrade_Text_CurrentLevel;
 
-
+    public GameObject crit;
+    public GameObject critSpawn;
 
     public Image coinsPerClick_Bar;
     public Image coinsPerClick_Bar_BG;
@@ -153,7 +191,9 @@ public class GameController : MonoBehaviour
     public GameObject acheivementScreen;
     public List<Acheivement> acheievmentList = new List<Acheivement>();
 
-    public ProductionUpgrades productionUpgrades;
+    public ProductionUpgrades productionUpgradeManager;
+    public Upgrade_Standard standardUpgradeManager;
+    public OfflineManager offlineManager;
 
 
     public bool counting = true;
@@ -161,15 +201,17 @@ public class GameController : MonoBehaviour
     public ButtonParticles buttonParticles_script;
 
     //Progression 
-    public int standard_progressionTracker;
-    public GameObject upgradeScreen;
-    public Unlock_standard[] upgrade_Progression_Array = new Unlock_standard[15];
+    public int standard_upgrade_progressionTracker;
+    public Unlock_standard[] standard_upgrade_Progression_Array = new Unlock_standard[15];
+
+    public int production_upgrade_progressionTracker;
+    public Unlock_standard[] production_upgrade_Progression_Array = new Unlock_standard[10];
 
     public int[] standard_Upgrade_Levels;
     public BigDouble[] standard_Upgrade_BaseCost;
     public float[] standard_Upgrade_ChangeInPrice;
 
-    //public int standard_progressionTracker;
+    //public int standard_upgrade_progressionTracker;
 
     public void Start()
     {
@@ -180,22 +222,33 @@ public class GameController : MonoBehaviour
             acheievmentList.Add(obj);
         }
 
-        //data.upgrade_Progression_Array = upgradeScreen.GetComponentsInChildren<Unlock_standard>()
+        //data.standard_upgrade_Progression_Array = upgradeScreen.GetComponentsInChildren<Unlock_standard>()
 
         SaveSystem.LoadPlayer(ref data);
+        
+        productionUpgradeManager.StartProductionUpgrades();
+        standardUpgradeManager.StartStandardUpgrades();
+        //standard_upgrade_Progression_Array = GameObject.FindGameObjectsWithTag("Upgrade_Standard");
 
-        productionUpgrades.StartProductionUpgrades();
-        //upgrade_Progression_Array = GameObject.FindGameObjectsWithTag("Upgrade_Standard");
 
-
-        for (int i =0; i < upgrade_Progression_Array.Length; i++)
+        for (int i =0; i < standard_upgrade_Progression_Array.Length; i++)
         {
-            upgrade_Progression_Array[i].isUnlocked = data.unlocked[i];
-            Debug.Log(upgrade_Progression_Array[i].isUnlocked);
+            standard_upgrade_Progression_Array[i].isUnlocked = data.standard_unlocked[i];
+            Debug.Log(standard_upgrade_Progression_Array[i].isUnlocked);
+        }
+        for (int i = 0; i < production_upgrade_Progression_Array.Length; i++)
+        {
+            production_upgrade_Progression_Array[i].isUnlocked = data.production_unlocked[i];
+            Debug.Log(production_upgrade_Progression_Array[i].isUnlocked);
         }
 
+
+        TotalCPS();
+        offlineManager.LoadOffline();
         StartCoroutine(CoinsPerSecond(1.0f));
 
+
+        
 
     }
 
@@ -226,8 +279,8 @@ public class GameController : MonoBehaviour
         data.coinsPerSecond_Level = 0;
 
         //coinsPerClick_UpgradeCost = 10f;
-        data.coinsPerClick_CPC_Amount = 0.2f;
-        data.coinsPerClick_CurrentCPC = 0.2f;
+        data.cpc_Upgrade_1_base_amount = 0.5f;
+        data.coinsPerClick_CurrentCPC = 0.5f;
         data.coinsPerClick_Level = 0;
     }
 
@@ -242,37 +295,61 @@ public class GameController : MonoBehaviour
         //SaveSystem.SavePlayer(data);
     }
 
+   
+
     public void UnlockProgression()
     {
-        //data.upgrade_Progression_Array[0].GetComponent<Unlock_standard>()
-        upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().active = true;
+        //data.standard_upgrade_Progression_Array[0].GetComponent<Unlock_standard>()
+        standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().active = true;
 
-        if(upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().active && !upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
+        if(standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().active && !standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
         {
-            upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().Locked();
-            upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().unlockText.text = $"{upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock} coins to unlock this upgrade.";
-            BigDoubleFillAmount(data.currency, upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock, upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().progressionBar);
+            standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().Locked();
+            standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().unlockText.text = $"{standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock} coins to unlock this upgrade.";
+            BigDoubleFillAmount(data.currency, standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock, standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().progressionBar);
         }
-        if(data.currency >= upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock)
+        if(data.currency >= standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock)
         {
-            upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().isUnlocked = true;
-            data.unlocked[standard_progressionTracker] = upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().isUnlocked;
+            standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked = true;
+            data.standard_unlocked[standard_upgrade_progressionTracker] = standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked;
         }
-        if (upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
+        if (standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
         {
-            upgrade_Progression_Array[standard_progressionTracker].GetComponent<Unlock_standard>().Unlocked();
-            standard_progressionTracker++;
+            standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().Unlocked();
+            standard_upgrade_progressionTracker++;
         }
 
     }
+    public void ProductionUnlockProgression()
+    {
+        //data.standard_upgrade_Progression_Array[0].GetComponent<Unlock_standard>()
+        production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().active = true;
 
+        if (production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().active && !production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
+        {
+            production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().Locked();
+            production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().unlockText.text = $"{production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock} coins to unlock this upgrade.";
+            BigDoubleFillAmount(data.currency, production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock, production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().progressionBar);
+        }
+        if (data.currency >= production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock)
+        {
+            production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked = true;
+            data.production_unlocked[production_upgrade_progressionTracker] = production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked;
+        }
+        if (production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
+        {
+            production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().Unlocked();
+            production_upgrade_progressionTracker++;
+        }
+
+    }
 
     public void GameText_Upgrades_Update() //Set and update what text should appear on upgrade buttons
     {
 
         coinsPerSecond_Upgrade_Text_Cost.text = UpdateNotation(theCost_CPS, "F0");
         coinsPerSecond_Upgrade_Text_Amount.text = "+" + (data.coinsPerSecond_Amount * data.production_multiplier).ToString("F3") + " c/s";
-        coinsPerSecond_Upgrade_Text_CurrentLevel.text = "LVL: " + data.coinsPerSecond_Level.ToString();
+        coinsPerSecond_Upgrade_Text_CurrentLevel.text = "LVL: " + data.standard_Upgrade_lvl_1.ToString();
 
         coinsPerClick_Upgrade_Text_Cost.text = UpdateNotation(theCost_CPC, "F0");
         coinsPerClick_Upgrade_Text_Amount.text = "+" + (data.coinsPerClick_CPC_Amount * data.production_multiplier).ToString("F3");
@@ -294,21 +371,45 @@ public class GameController : MonoBehaviour
         coinsPerSecond_View_Text.text = UpdateNotation(TotalCPS(), "F3") + " coins/s";
         production_View_Amount_Text.text = "Production Boost: " + (data.production_multiplier).ToString("F3") + "x";
 
-        Debug.Log(TotalCPC());
+        Debug.Log(TotalCPS());
     }
 
     public string UpdateNotation(BigDouble value, string stringFormat)
     {
-        if (value > 1000)
+        if (value <= 1000) return value.ToString(stringFormat);
+
+        switch (data.notationType)
         {
-            var exponent = (Floor(Log10(Abs(value))));
-            var mantissa = (value / Pow(10, exponent));
-            return mantissa.ToString(format: "F3") + "e" + exponent;
+            case 0:
+                { 
+                 var exponent = (Floor(Log10(Abs(value))));
+                 var mantissa = (value / Pow(10, exponent));
+                 return mantissa.ToString(format: "F3") + "e" + exponent;
+                }
+            case 1:
+                {
+                    var exponent = 3*Floor(Floor(Log10(value))/3);
+                    var mantissa = (value / Pow(10, exponent));
+                    return mantissa.ToString(format: "F3") + "e" + exponent;
+                }
+            case 2:
+                {
+                    var exponent = 3 * Floor(Floor(Log10(value)) / 3);
+                    var letterOne = ((char)Math.Floor(((exponent.ToDouble() - 3) / 3) % 26 + 97)).ToString();
+
+                    if(exponent.ToDouble() / 3 >= 27)
+                    {
+                        var letterTwo = ((char)Math.Floor(((exponent.ToDouble() - 3 * 26) / ( 3 * 26)) % 26 + 97)).ToString();
+                        return (value / Pow(10, exponent)).ToString(stringFormat) + letterTwo + letterOne;
+                    }
+                    if(value > 1000)
+                        return (value / Pow(10, exponent)).ToString(stringFormat) + letterOne;
+                    return value.ToString(stringFormat);
+                }
         }
-        else
-        {
-            return value.ToString(stringFormat);
-        }
+        
+
+        return "";
     }
 
     #region Buy Logic----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -407,14 +508,13 @@ public class GameController : MonoBehaviour
                         SetvaluesToDefault();
 
                         data.production_level += data.production_level_ToGet;
-
                     }
                 }
                 break;
         }
 
-        data.coinsPerSecond_CurrentCPS = data.coinsPerSecond_Level * data.coinsPerSecond_Amount;
-        //data.coinsPerClick_CurrentCPC = TotalCPC();
+        data.coinsPerSecond_CurrentCPS = TotalCPS();
+        data.coinsPerClick_CurrentCPC = TotalCPC();
 
     }
 
@@ -455,24 +555,28 @@ public class GameController : MonoBehaviour
     public BigDouble TotalCPC()
     {
         var temp = data.coinsPerClick_CurrentCPC;
-        temp += ((data.coinsPerClick_Level * data.coinsPerClick_CPC_Amount) * data.production_multiplier) + 0.5f;
-        temp *= BigDouble.Pow(1.05, productionUpgrades.levels[2]);
+        temp += ((data.standard_Upgrade_lvl_1 * data.cpc_Upgrade_1_base_amount) * data.production_multiplier);
+        temp += ((data.standard_Upgrade_lvl_8 * data.cpc_Upgrade_2_base_amount) * data.production_multiplier);
+        temp *= BigDouble.Pow(1.05, productionUpgradeManager.levels[2]);
+        Debug.Log(temp + 1);
         return temp;
     }
 
     public BigDouble TotalCPS()
     {
-        var temp = data.coinsPerSecond_Level * data.coinsPerSecond_Amount;
+        var temp = (data.standard_Upgrade_lvl_1 * data.coinsPerSecond_Amount) + data.cpc_Upgrade_1_base_amount;
         temp *= data.production_multiplier;
-        temp *= BigDouble.Pow(1.1, productionUpgrades.levels[3]);
+        temp *= BigDouble.Pow(1.1, productionUpgradeManager.levels[3]);
         return temp;
     }
 
     public void Update()
     {
         RunAcheivements();
-        UnlockProgression();
-        productionUpgrades.Run();
+        if (standard_upgrade_progressionTracker < 15) UnlockProgression();
+        if(production_upgrade_progressionTracker < 10)ProductionUnlockProgression();
+        productionUpgradeManager.Run();
+        standardUpgradeManager.Run();
 
         GameText_Upgrades_Update();
         GameText_Information_Update();
@@ -588,15 +692,37 @@ public class GameController : MonoBehaviour
             data.totalCurrency += data.coinsPerSecond;
             yield return new WaitForSeconds(timeBetween);
         }
-    } 
+    }
 
- 
 
+    public void InstantiateCriticalClick(float multiplier)
+    {
+        var spawn = Instantiate(crit, critSpawn.transform);
+        spawn.GetComponentInChildren<CriticalClick>().Play();
+        spawn.GetComponentInChildren<CriticalClick>().ChangeText(multiplier);
+    }
 
     public void MainButton_Click()
     {
         data.currency += TotalCPC();
         data.totalCurrency += TotalCPC();
+        if(data.standard_Upgrade_lvl_3 > 0)
+        {
+            var critical = new System.Random().Next(1, 1000);
+            if (critical > 1000 - data.standard_Upgrade_lvl_3)
+            {
+                float criticalMultiplierBase = UnityEngine.Random.Range(1.0f, 50.0f); 
+                if(data.standard_Upgrade_lvl_4 > 0)
+                {
+                    criticalMultiplierBase *= 1.5f * data.standard_Upgrade_lvl_4;
+                    data.currency += TotalCPC() * criticalMultiplierBase;
+                }
+                else data.currency += TotalCPC() * criticalMultiplierBase;
+
+                InstantiateCriticalClick(criticalMultiplierBase);
+            }
+        }
+        
         //buttonParticles_script.ButtonClick();
     }
 
