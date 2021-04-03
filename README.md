@@ -19,6 +19,8 @@ which currency is earned.
 ### Upgrades ###
 On the upgrades or production page, there are upgrade panels, these panels have 6 sections.
 
+![gfasdfg](https://user-images.githubusercontent.com/27737718/113463297-f37d4380-941c-11eb-9b3e-a36596be369f.PNG)
+
 * Upgrade name, top left of the panel, this is a short description of the upgrade.
 * Upgrade level, top right of the panel, this shows you what level the current upgrade is at.
 * Upgrade description, middle of the panel, this describes what the upgrade does.
@@ -29,6 +31,7 @@ On the upgrades or production page, there are upgrade panels, these panels have 
 - - - -
 
 ### Acheivements ###
+![adfsg](https://user-images.githubusercontent.com/27737718/113463362-3a6b3900-941d-11eb-98a7-381956bf2e14.PNG)
 
 This section is just so that you can see your progress throughout the game, they serve no purpose other than to show you how far you have came :)
 
@@ -44,16 +47,22 @@ This section of the game is where you can gamble your hard earned currency to ga
 
 #### Coin flip ####
 
+![fsfg](https://user-images.githubusercontent.com/27737718/113463376-448d3780-941d-11eb-854b-190cba153e5f.PNG)
+
 If you wish to play, you must first specify how much you wish to bet using the + and - buttons on the panel.
 After you have decided how much you wish to bet, you then select whether you think the outcome will be heads or tails.
 Once you have made your selection, you press the bet button and cross your fingers!
 
 #### Spin the wheel ####
 
+![fsdfsg](https://user-images.githubusercontent.com/27737718/113463392-5c64bb80-941d-11eb-8aac-da9cbafee1a2.PNG)
+
 With this game, you must choose how much you want to bet using the + and - buttons within the panel.
 Once you have done that, you can then bet that amount and the wheel will spin! 
 
 #### Dice roulette ####
+
+![fsdfsdg](https://user-images.githubusercontent.com/27737718/113463397-625a9c80-941d-11eb-8e4d-ad52e5293e89.PNG)
 
 This game is a little more complex but it has better payouts! There are two sections:
 
