@@ -43,6 +43,48 @@ The game is very simple, click the button to earn currency, spend that currency 
 which currency is earned.
 
 - - - -
+ 
+### The main page ###
+
+This section is where you will spend your time earning currency. In the middle of the screen there is a button, when you press this button you will gain currency, simple!
+
+![fgdg](https://user-images.githubusercontent.com/27737718/113466056-ab681c00-9430-11eb-87e0-6903df12cad5.PNG)
+
+#### Offline progress ####
+There is a small section on the right side that shows you how much currency you have earned whilst you were away from the game, this means that even when you aren't playing the game, you are still earning currency!
+
+![asfad](https://user-images.githubusercontent.com/27737718/113466099-eff3b780-9430-11eb-8628-14604202ae3e.PNG)
+
+#### Production level ####
+
+Underneath the offline panel there is a production level section, what's this?
+![gsdfsgdg](https://user-images.githubusercontent.com/27737718/113466108-06017800-9431-11eb-9db6-b794a1454b3b.PNG)
+
+A prestiege system that lets you go back to square one, but also improves the effectiveness of the upgrades!
+This section allows you to increase your production level, this level determines how much of a production multiplier is applied throughout the full game. 
+This production multiplier increases the effeciveness of certain upgrades, for example:
+
+The coins per click upgrade gives you 0.5 coins per click, but if your production multiplier was 2x that same upgrade would give you 1 coin per click instead!
+
+Remember though, when you level this up, it will reset all of your progress, so choose when you want to increase your production level carefully.
+
+### Information panel ###
+
+The information panel shows you all of the relevant infomation that you need, current coins, coins per click, coins per second etc.
+
+![sgsdg](https://user-images.githubusercontent.com/27737718/113466263-5af1be00-9432-11eb-92a2-9106b3da74dc.PNG)
+
+On the left, there is coins per second, this is how many coins you are earning every second... obviously
+In the middle there is the amount of currency that you currently have.
+Underneath the currency there is a production multiplier, this is the multiplier that is applied to most of the upgrades, increase this by leveling up your production level.
+On the right there is coins per click, this is the amount of coins that you will get every time you press the button.
+
+### Tab Section ###
+
+This is what you will use to navigate between pages, simply select which tab you wish to go to and it will take you there!
+
+![sdfasg](https://user-images.githubusercontent.com/27737718/113466355-0d298580-9433-11eb-8c04-6d4ed03b7b5a.PNG)
+
 ### Upgrades ###
 On the upgrades or production page, there are upgrade panels, these panels have 6 sections.
 
