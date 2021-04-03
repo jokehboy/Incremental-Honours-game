@@ -1,6 +1,6 @@
 # Incremental-Honours-game
 This game was created for my honours project,
-I wanted to create a study that was not just a study, I remember years ago being asked by one of my older friends if I would be willing to help with their honours project and I said sure! I'd be happy to help, what am I doing? Am I watching a cool video that you created? Am I listening to something and giving my thoughts and feelings? It was nothing like that, instead, I spent the better part of an hour filling out a 10 page questionnaire and being asked interrogated about my opinion on global warming, my knowledge of it and whether or not I thought it was an issue. After that experience, I wanted to make my future honours project as painless as possible for anyone who has the misfortune of getting asked to help.
+I wanted to create a study that was not just a study, I remember years ago being asked by one of my older friends if I would be willing to help with their honours project and I said sure! I'd be happy to help, what am I doing? Am I watching a cool video that you created? Am I listening to something and giving my thoughts and feelings? It was nothing like that, instead, I spent the better part of an hour filling out a 10 page questionnaire and being interrogated about my opinion on global warming, my knowledge of it and whether or not I thought it was an issue. After that experience, I wanted to make my future honours project as painless as possible for anyone who has the misfortune of getting asked to help.
 
 So to make it as painless as possible, I decided to make a game first and then fit the study around it second! That seems counter intuitive since the study is the project but I wanted to make the study as optional as possible, this means that the user gets to enjoy something and in the process, very naturally contribute to my study (if they wish).
 
@@ -195,7 +195,7 @@ As you have read, my game collects data on your gameplay and nothing else, but p
 
 - - - -
 
-# Why this is a thing #
+# What is the study? #
 
 Hi, this game has been created to test the effectiveness of chance mechanics in video games.
 These mechanics are all around us when we are playing games, some are more subtle than others.
