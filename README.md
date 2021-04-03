@@ -58,6 +58,7 @@ There is a small section on the right side that shows you how much currency you 
 #### Production level ####
 
 Underneath the offline panel there is a production level section, what's this?
+
 ![gsdfsgdg](https://user-images.githubusercontent.com/27737718/113466108-06017800-9431-11eb-9db6-b794a1454b3b.PNG)
 
 A prestiege system that lets you go back to square one, but also improves the effectiveness of the upgrades!
