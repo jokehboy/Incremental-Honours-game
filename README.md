@@ -1,6 +1,10 @@
 # Incremental-Honours-game
-This game was created for my honours project, it is not perfect but I was under a time limit, hopefully you will
-enjoy it even though it isnt as good as it could have been!!!
+This game was created for my honours project,
+I wanted to create a study that was not just a study, I remember years ago being asked by one of my older friends if I would be willing to help with their honours project and I said sure! I'd be happy to help, what am I doing? Am I watching a cool video that you created? Am I listening to something and giving my thoughts and feelings? It was nothing like that, instead, I spent the better part of an hour filling out a 10 page questionnaire and being asked interrogated about my opinion on global warming, my knowledge of it and whether or not I thought it was an issue. After that experience, I wanted to make my future honours project as painless as possible for anyone who has the misfortune of getting asked to help.
+
+So to make it as painless as possible, I decided to make a game first and then fit the study around it second! That seems counter intuitive since the study is the project but I wanted to make the study as optional as possible, this means that the user gets to enjoy something and in the process, very naturally contribute to my study (if they wish).
+
+As stated in the splash screen, by playing this game you agree to have analytical game based data collected, this data is anonymous and not personal whatsoever. However you can opt out, if you do not want to take part in my study and just enjoy the game.
 
 # What data is being collected??? #
 
