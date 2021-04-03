@@ -8,7 +8,7 @@ As stated in the splash screen, by playing this game you agree to have analytica
 
 # What data is being collected??? #
 
-Due to the current situation, I cannot ask people to sit in a room and play my game for "Research purposes", so to overcome this, I decided to use unity analytics. Since there is no need for specific user data such as their name, age occupation etc. (which shouldn't be needed as much as it seems to be needed now to do simple tasks online) I opted to use unity analytics to just collect anonymous game data.
+Due to the current situation, I cannot ask people to sit in a room and play my game for "Research purposes", so to overcome this, I decided to use unity analytics. Since there is no need for specific user data such as their name, age occupation etc. (which shouldn't be needed as much as it seems to be now) I opted to use unity analytics to just collect anonymous game data.
 
 Unity analytics is literally just collecting a few variables from the game data script, that's it. But due to data protection laws, rules and regulations, I am obligated to tell you that I am in fact taking this data and in the process, make it sound as scary and intrusive as possible. 
 
