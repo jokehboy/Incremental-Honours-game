@@ -77,6 +77,47 @@ press the bet button to see the result!
 Please note that you cannot bet unless you have chosen an option.
 
 - - - -
+### Settings ###
+
+The settings section has 4 parts to it:
+* Save, import, export
+* Notation
+* Data collection info and opt out
+* A link to this github and how to section.
+
+#### Save and import/export ####
+![sdfag](https://user-images.githubusercontent.com/27737718/113463957-1c073c80-9421-11eb-9200-3373b1c7263e.PNG)
+
+The game autosaves and has 5 backups, if you wish to go back to a previous save, simply delete the most recent save file, this should only be done if your current save has corrupted.
+
+If you want to overwrite the autosave function and manually save, just click the button an it will save.
+
+The import export section is if you wish to keep a backup of your current progress, this was added since going to the game files and copy pasting one of the save files is a pain.
+
+To create a backup of your current game progress, simply press the export button, this will create a long encrypted string of characters. Copy and paste this somewhere for later use.
+
+If you wish to import a previous copy of your game progress, take the long string that you copy and pasted previously and paste it into the import field. Once you have done that, press the import button and youll be back to where you exported originally! 
+
+#### Notation ####
+![dasfasg](https://user-images.githubusercontent.com/27737718/113463964-232e4a80-9421-11eb-8a8e-0656a5d4b3d7.PNG)
+
+This section allows you to change the notation of the numbers being displayed, since the numbers can get pretty big, number notation is needed to save screen space.
+
+There are 3 notations to choose from:
+* Scientific notation
+* Engineering notation
+* Letter notation
+
+If you want info on the first two, there is alot of information online, the last one however, is a notation method that was created by incremental games to display large numbers.
+
+Letter notation is where every time the number increases by 1e^3, a letter is placed there instead, this allows the numbers to be simplified into a smaller area of the screen.
+For example, 7,910,838.00314 can be simplified into 7.911b.
+
+#### Data collection info and opt out ####
+
+As you have read, my game collects data on your gameplay and nothing else, but people should be able to exercise their right to data privacy. So if you wish to opt out, simply click on the button and it will take you to a webpage where you can opt out, see what data has been collected or delete your data from existence.
+
+- - - -
 
 # Why this is a thing #
 
