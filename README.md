@@ -86,6 +86,8 @@ This is what you will use to navigate between pages, simply select which tab you
 
 ![sdfasg](https://user-images.githubusercontent.com/27737718/113466355-0d298580-9433-11eb-8c04-6d4ed03b7b5a.PNG)
 
+- - - -
+
 ### Upgrades ###
 On the upgrades or production page, there are upgrade panels, these panels have 6 sections.
 
@@ -97,6 +99,8 @@ On the upgrades or production page, there are upgrade panels, these panels have 
 * Upgrade cost, bottom of the panel, this is how much it will cost to upgrade by one level.
 * Buy buttons, underneath the panel, this allows you to purchase the upgrade, there are 3 buttons, each are labelled with how many times you are buying the upgrade.
 * Progress bar, underneath the buy buttons, this is a visual representation of how much currency/product you need to purchase one upgrade level.
+
+To unlock new upgrades you must have the amount of currency shown on the locked panel.
 
 - - - -
 
