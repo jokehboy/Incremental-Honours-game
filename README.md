@@ -8,7 +8,30 @@ Due to the current situation, I cannot ask people to sit in a room and play my g
 
 Unity analytics is literally just collecting a few variables from the game data script, that's it. But due to data protection laws, rules and regulations, I am obligated to tell you that I am in fact taking this data and in the process, make it sound as scary and intrusive as possible. 
 
-If you want to help me in this study, please allow me the privilege of collecting a few variables in the background while you play my game :) 
+Companies and advertisers have way too much data on people, a sickening amount and I want no part of it whatsoever, so to make sure that we are all on the same page with what I am collecting, I have included this section.
+
+There are two sections to this, what I am collecting from you, which is custom game data that is unique to my game, and by that I mean this data does not exist in any other game, therefor it is custom game data. 
+
+And the other section is what unity analytics collects by default, which I have no control or interest in whatsoever. I should explain that unity analytics is meant to be used for just that, analytics, and unity has provided developers with a great, easy to use tool to try and understand where they are going wrong, what's working and what isn't and so on. It is a tool created to give developers statistical data on their games to help with future decisions. And with that, there is some data that is collected by default that I will outline below.
+
+I am collecting from you:
+
+* Variables from the game data script (total currency, total product, ect.)
+* That's it
+
+What unity analytics collects by default:
+
+* Daily and Monthly active user counts
+* Average number of sessions per user.
+* Total daily play time (a sum of all user time)
+* Total daily play time per active user (an average of a single users play time, based on all users)
+* Player retention
+
+If you want more information on what unity analytics collects, please visit this website: https://docs.unity3d.com/Manual/UnityAnalyticsOverview.html
+
+So that's it, that is what is being collected, if you feel as if this is too much, dont hesitate to opt out!
+
+Otherwise, if you want to help me in this study, please allow me the privilege of collecting a few variables in the background while you play my game :) 
 
 ## How to play ##
 
@@ -114,6 +137,8 @@ Letter notation is where every time the number increases by 1e^3, a letter is pl
 For example, 7,910,838.00314 can be simplified into 7.911b.
 
 #### Data collection info and opt out ####
+
+![gsdsf](https://user-images.githubusercontent.com/27737718/113463981-55d84300-9421-11eb-86ef-04a0ac0caef4.PNG)
 
 As you have read, my game collects data on your gameplay and nothing else, but people should be able to exercise their right to data privacy. So if you wish to opt out, simply click on the button and it will take you to a webpage where you can opt out, see what data has been collected or delete your data from existence.
 
