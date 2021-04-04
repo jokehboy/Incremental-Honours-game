@@ -1,4 +1,4 @@
-# Get money, an honours study by Ben
+# Get money, an honours study and a How to play by Ben
 This game was created for my honours project,
 I wanted to create a study that was not just a study, I remember years ago being asked by one of my older friends if I would be willing to help with their honours project and I said sure! I'd be happy to help, what am I doing? Am I watching a cool video that you created? Am I listening to something and giving my thoughts and feelings? It was nothing like that, instead, I spent the better part of an hour filling out a 10 page questionnaire and being interrogated about my opinion on global warming, my knowledge of it and whether or not I thought it was an issue. After that experience, I wanted to make my future honours project as painless as possible for anyone who has the misfortune of getting asked to help.
 
