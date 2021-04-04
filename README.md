@@ -20,7 +20,7 @@ And the other section is what unity analytics collects by default, which I have 
 
 I am collecting from you:
 
-* Game variables, total curreny spent on games, total lost, total earned from the game data script, things like that.
+* Some variables from the game. Things like: total curreny spent on games, total lost, total earned and so on.
 * That's it
 
 What unity analytics collects by default:
