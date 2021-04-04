@@ -37,12 +37,13 @@ So that's it, that is what is being collected, if you feel as if this is too muc
 
 Otherwise, if you want to help me in this study, please allow me the privilege of collecting a few variables in the background while you play my game :) 
 
+- - - -
+
 # How to play #
 
 The game is very simple, click the button to earn currency, spend that currency on upgrades to improve the rate in
 which currency is earned.
 
-- - - -
  
 ## The main page ##
 
