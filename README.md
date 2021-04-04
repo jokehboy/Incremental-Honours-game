@@ -37,31 +37,31 @@ So that's it, that is what is being collected, if you feel as if this is too muc
 
 Otherwise, if you want to help me in this study, please allow me the privilege of collecting a few variables in the background while you play my game :) 
 
-## How to play ##
+# How to play #
 
 The game is very simple, click the button to earn currency, spend that currency on upgrades to improve the rate in
 which currency is earned.
 
 - - - -
  
-### The main page ###
+## The main page ##
 
 This section is where you will spend your time earning currency. In the middle of the screen there is a button, when you press this button you will gain currency, simple!
 
 ![fgdg](https://user-images.githubusercontent.com/27737718/113466056-ab681c00-9430-11eb-87e0-6903df12cad5.PNG)
 
-#### Offline progress ####
+### Offline progress ###
 There is a small section on the right side that shows you how much currency you have earned whilst you were away from the game, this means that even when you aren't playing the game, you are still earning currency!
 
 ![asfad](https://user-images.githubusercontent.com/27737718/113466099-eff3b780-9430-11eb-8628-14604202ae3e.PNG)
 
-#### Production level ####
+### Production level ###
 
 Underneath the offline panel there is a production level section, what's this?
 
 ![gsdfsgdg](https://user-images.githubusercontent.com/27737718/113466108-06017800-9431-11eb-9db6-b794a1454b3b.PNG)
 
-A prestiege system that lets you go back to square one, but also improves the effectiveness of the upgrades!
+A prestiege system that lets you reset your progress, but also improves the effectiveness of your upgrades in the future!
 This section allows you to increase your production level, this level determines how much of a production multiplier is applied throughout the full game. 
 This production multiplier increases the effeciveness of certain upgrades, for example:
 
@@ -88,8 +88,8 @@ This is what you will use to navigate between pages, simply select which tab you
 
 - - - -
 
-### Upgrades ###
-On the upgrades or production page, there are upgrade panels, these panels have 6 sections. To purchase an upgrade you press and hold.
+## Upgrades ##
+On the upgrades or production page, there are upgrade panels, these panels have 6 sections. To purchase an upgrade you press and hold the button.
 
 ![gfasdfg](https://user-images.githubusercontent.com/27737718/113463297-f37d4380-941c-11eb-9b3e-a36596be369f.PNG)
 
@@ -100,18 +100,30 @@ On the upgrades or production page, there are upgrade panels, these panels have 
 * Buy buttons, underneath the panel, this allows you to purchase the upgrade, there are 3 buttons, each are labelled with how many times you are buying the upgrade.
 * Progress bar, underneath the buy buttons, this is a visual representation of how much currency/product you need to purchase one upgrade level.
 
-To unlock new upgrades you must have the amount of currency shown on the locked panel.
+To unlock new upgrades you must have the amount of currency shown on the locked panel in your bank.
+
+### Coin upgrades ###
+
+![gfasdfg](https://user-images.githubusercontent.com/27737718/113463297-f37d4380-941c-11eb-9b3e-a36596be369f.PNG)
+
+Coin upgrades are what increase the rate in which you get more coins, you spend money to make more money.
+
+### Production upgrades ###
+
+![asfgd](https://user-images.githubusercontent.com/27737718/113511920-25e08b00-955a-11eb-9822-5225b8cec2be.PNG)
+
+These upgrades improve your current coin upgrades, they arent really useful unless you have coin upgrades, but if you do, hooooweeee do they help.
 
 - - - -
 
-### Acheivements ###
+## Acheivements ##
 ![adfsg](https://user-images.githubusercontent.com/27737718/113463362-3a6b3900-941d-11eb-98a7-381956bf2e14.PNG)
 
 This section is just so that you can see your progress throughout the game, they serve no purpose other than to show you how far you have came :)
 
 - - - -
 
-### Games ###
+## Games ##
 
 This section of the game is where you can gamble your hard earned currency to gain more currency. There are 3 games:
 
@@ -119,7 +131,7 @@ This section of the game is where you can gamble your hard earned currency to ga
 * Spin the wheel
 * Dice roulette
 
-#### Coin flip ####
+### Coin flip ###
 
 ![fsfg](https://user-images.githubusercontent.com/27737718/113463376-448d3780-941d-11eb-854b-190cba153e5f.PNG)
 
@@ -127,14 +139,14 @@ If you wish to play, you must first specify how much you wish to bet using the +
 After you have decided how much you wish to bet, you then select whether you think the outcome will be heads or tails.
 Once you have made your selection, you press the bet button and cross your fingers!
 
-#### Spin the wheel ####
+### Spin the wheel ###
 
 ![fsdfsg](https://user-images.githubusercontent.com/27737718/113463392-5c64bb80-941d-11eb-8aac-da9cbafee1a2.PNG)
 
 With this game, you must choose how much you want to bet using the + and - buttons within the panel.
 Once you have done that, you can then bet that amount and the wheel will spin! 
 
-#### Dice roulette ####
+### Dice roulette ###
 
 ![fsdfsdg](https://user-images.githubusercontent.com/27737718/113463397-625a9c80-941d-11eb-8e4d-ad52e5293e89.PNG)
 
@@ -151,7 +163,7 @@ press the bet button to see the result!
 Please note that you cannot bet unless you have chosen an option.
 
 - - - -
-### Settings ###
+## Settings ##
 
 The settings section has 4 parts to it:
 * Save, import, export
@@ -159,7 +171,7 @@ The settings section has 4 parts to it:
 * Data collection info and opt out
 * A link to this github and how to section.
 
-#### Save and import/export ####
+### Save and import/export ###
 ![sdfag](https://user-images.githubusercontent.com/27737718/113463957-1c073c80-9421-11eb-9200-3373b1c7263e.PNG)
 
 The game autosaves and has 5 backups, if you wish to go back to a previous save, simply delete the most recent save file, this should only be done if your current save has corrupted.
@@ -172,7 +184,7 @@ To create a backup of your current game progress, simply press the export button
 
 If you wish to import a previous copy of your game progress, take the long string that you copy and pasted previously and paste it into the import field. Once you have done that, press the import button and youll be back to where you exported originally! 
 
-#### Notation ####
+### Notation ###
 ![dasfasg](https://user-images.githubusercontent.com/27737718/113463964-232e4a80-9421-11eb-8a8e-0656a5d4b3d7.PNG)
 
 This section allows you to change the notation of the numbers being displayed, since the numbers can get pretty big, number notation is needed to save screen space.
@@ -187,7 +199,7 @@ If you want info on the first two, there is alot of information online, the last
 Letter notation is where every time the number increases by 1e^3, a letter is placed there instead, this allows the numbers to be simplified into a smaller area of the screen.
 For example, 7,910,838.00314 can be simplified into 7.911b.
 
-#### Data collection info and opt out ####
+##Data collection info and opt out ##
 
 ![gsdsf](https://user-images.githubusercontent.com/27737718/113463981-55d84300-9421-11eb-86ef-04a0ac0caef4.PNG)
 
