@@ -89,7 +89,7 @@ This is what you will use to navigate between pages, simply select which tab you
 - - - -
 
 ### Upgrades ###
-On the upgrades or production page, there are upgrade panels, these panels have 6 sections.
+On the upgrades or production page, there are upgrade panels, these panels have 6 sections. To purchase an upgrade you press and hold.
 
 ![gfasdfg](https://user-images.githubusercontent.com/27737718/113463297-f37d4380-941c-11eb-9b3e-a36596be369f.PNG)
 
