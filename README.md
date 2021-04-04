@@ -101,19 +101,19 @@ On the upgrades or production page, there are upgrade panels, these panels have 
 * Buy buttons, underneath the panel, this allows you to purchase the upgrade, there are 3 buttons, each are labelled with how many times you are buying the upgrade.
 * Progress bar, underneath the buy buttons, this is a visual representation of how much currency/product you need to purchase one upgrade level.
 
-___To unlock new upgrades you must have the amount of currency shown on the locked panel in your bank.
+___To unlock new upgrades you must have the amount of currency shown on the locked panel in your bank.___
 
 ### Coin upgrades ###
 
 ![gfasdfg](https://user-images.githubusercontent.com/27737718/113463297-f37d4380-941c-11eb-9b3e-a36596be369f.PNG)
 
-___Coin upgrades are what increase the rate in which you get more coins, you spend money to make more money.
+___Coin upgrades are what increase the rate in which you get more coins, you spend money to make more money.___
 
 ### Production upgrades ###
 
 ![asfgd](https://user-images.githubusercontent.com/27737718/113511920-25e08b00-955a-11eb-9822-5225b8cec2be.PNG)
 
-___These upgrades improve your current coin upgrades, they arent really useful unless you have coin upgrades, but if you do, hooooweeee do they help.
+___These upgrades improve your current coin upgrades, they arent really useful unless you have coin upgrades, but if you do, hooooweeee do they help.___
 
 - - - -
 
