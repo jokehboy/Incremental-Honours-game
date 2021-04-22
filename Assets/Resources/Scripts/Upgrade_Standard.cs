@@ -409,7 +409,7 @@ public class Upgrade_Standard : MonoBehaviour
             $"Improve base critical click multiplier by +1.05x, bigger multipliers on a critical click!",
             $"Upgrade to reduce time by 0.02 seconds, clicks for you",
             $"Increase chance of earning product on click by +0.01%, there's a chance to earn product when you click.",
-            $"Increase product earned upon click +{gameController.UpdateNotation(gameController.data.productionEarnedOnClick_Upgrade * gameController.data.production_multiplier,"F3")}, increases the base amount of product earned on a product click.",
+            $"Increase product earned upon click +{gameController.UpdateNotation(gameController.data.productionEarnedOnClick_Upgrade * (gameController.data.production_multiplier + (0.01 * gameController.data.production_upg_lvl5)),"F3")}, increases the base amount of product earned on a product click.",
             $"Increase coins per click by +{gameController.UpdateNotation(gameController.data.cpc_Upgrade_2_base_amount * (gameController.data.production_multiplier + (0.01 * gameController.data.production_upg_lvl5)+ (0.05 * gameController.data.production_upg_lvl3)),"F3")}",
             $"Increase coins per second by +{gameController.UpdateNotation(gameController.data.cps_Upgrade_2_base_amount * (gameController.data.production_multiplier + (0.01 * gameController.data.production_upg_lvl5)+ (0.1 * gameController.data.production_upg_lvl4)),"F3")}C/s",
             $"Add another button, auto click applies. The auto clicker will click each button.",

@@ -211,7 +211,7 @@ public class GameController : MonoBehaviour
             if (standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().active && !standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
             {
                 standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().Locked();
-                standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().unlockText.text = $"{standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock} coins to unlock this upgrade.";
+                standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().unlockText.text = $"{UpdateNotation((standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock),"F3") } coins to unlock this upgrade.";
                 BigDoubleFillAmount(data.currency, standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock, standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().progressionBar);
             }
             if (data.currency >= standard_upgrade_Progression_Array[standard_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock)
@@ -239,7 +239,7 @@ public class GameController : MonoBehaviour
             if (production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().active && !production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().isUnlocked)
             {
                 production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().Locked();
-                production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().unlockText.text = $"{production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock} product to unlock this upgrade.";
+                production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().unlockText.text = $"{UpdateNotation((production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock),"F3") } product to unlock this upgrade.";
                 BigDoubleFillAmount(data.product, production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock, production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().progressionBar);
             }
             if (data.product >= production_upgrade_Progression_Array[production_upgrade_progressionTracker].GetComponent<Unlock_standard>().coinsNeededToUnlock)
@@ -291,8 +291,8 @@ public class GameController : MonoBehaviour
         if(tabManager.selectedTab == tabManager.tabButtons[2])
         {
             currencyText.text = "Product: " + UpdateNotation(data.product, "F4");
-            coinsPerClick_View_Text.text = "PPC: +" + UpdateNotation((data.productionEarnedOnClick_Upgrade * data.standard_Upgrade_lvl_7), "F3");
-            coinsPerSecond_View_Text.text = "PPS: " + UpdateNotation((data.productEarnedPerSec_base_amount * data.production_upg_lvl2), "F3") + " P/s";
+            coinsPerClick_View_Text.text = "PPC: +" + UpdateNotation(data.productionEarnedOnClick_Upgrade +(data.productionEarnedOnClick_Upgrade * data.standard_Upgrade_lvl_7) * (data.production_multiplier + (0.01 * data.production_upg_lvl5)), "F3");
+            coinsPerSecond_View_Text.text = "PPS: " + UpdateNotation((data.productEarnedPerSec_base_amount * data.production_upg_lvl2) * (data.production_multiplier + (0.01 * data.production_upg_lvl5)), "F3") + " P/s";
         }
         else
         {
@@ -449,8 +449,8 @@ public class GameController : MonoBehaviour
         data.currency += data.coinsPerSecond;
         data.totalCurrency += data.coinsPerSecond;
 
-        data.product += data.productEarnedPerSec_base_amount * data.production_upg_lvl2;
-        data.totalProduct += (data.productEarnedPerSec_base_amount * data.production_upg_lvl2) * data.production_multiplier;
+        data.product += (data.productEarnedPerSec_base_amount * data.production_upg_lvl2) * (data.production_multiplier + (0.01 * data.production_upg_lvl5));
+        data.totalProduct += (data.productEarnedPerSec_base_amount * data.production_upg_lvl2) * (data.production_multiplier + (0.01 * data.production_upg_lvl5));
         yield return new WaitForSeconds(1f);
         hasTicked = false;
     }
@@ -719,9 +719,9 @@ public class GameController : MonoBehaviour
                 if (data.standard_Upgrade_lvl_7 > 0)
                 {
                     productGained *= data.standard_Upgrade_lvl_7;
-                    productGained *= data.production_multiplier;
+                    
                 }
-                productGained *= multiplier;
+                productGained *= multiplier + (data.production_multiplier + (0.01 * data.production_upg_lvl5));
                 data.product += productGained;
                 data.totalProduct += productGained;
 

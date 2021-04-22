@@ -8,63 +8,58 @@ public class Dice : MonoBehaviour {
     public DiceGame diceGame;
     public int theSide;
 
-    // Array of dice sides sprites to load from Resources folder
+    //Array of dice sides sprites to load from Resources folder
     private Sprite[] diceSides;
 
-    // Reference to sprite renderer to change sprites
+    //Reference to sprite
     private Image rend;
 
-	// Use this for initialization
 	private void Start () {
 
-        // Assign Renderer component
+        //Assign Renderer
         rend = GetComponent<Image>();
 
-        // Load dice sides sprites to array from DiceSides subfolder of Resources folder
+        //Load dice sides sprites to array 
         diceSides = Resources.LoadAll<Sprite>("Sprites/DiceSides/");
 	}
 	
-    // If you left click over the dice then RollTheDice coroutine is started
     public void Roll()
     {
         StartCoroutine("RollTheDice");
     }
 
-    // Coroutine that rolls the dice
+
     private IEnumerator RollTheDice()
     {
-        // Variable to contain random dice side number.
-        // It needs to be assigned. Let it be 0 initially
-        int randomDiceSide = 0;
 
-        // Final side or value that dice reads in the end of coroutine
+        int randomDiceSide = 0;
         int finalSide = 0;
 
-        // Loop to switch dice sides ramdomly
-        // before final side appears. 20 itterations here.
+        //Loop to switch dice sides ramdomly, 20 itterations.
         for (int i = 0; i <= 20; i++)
         {
-            // Pick up random value from 0 to 5 (All inclusive)
+            //Pick up random value
             randomDiceSide = Random.Range(0, 6);
 
-            // Set sprite to upper face of dice from array according to random value
+            //Set sprite according to random value
             rend.sprite = diceSides[randomDiceSide];
 
-            // Pause before next itteration
+            //Pause before running again
             yield return new WaitForSeconds(0.05f);
         }
 
-        // Assigning final side so you can use this value later in your game
-        // for player movement for example
+        //Assigning final side
         finalSide = randomDiceSide + 1;
 
-        // Show final dice value in Console
+        //Show dice value in Console
         diceGame.isRolling = false;
         theSide = finalSide;
 
+        //Assign dice value to diceface in dice game
         if (this.name == "dice1") diceGame.dice1Face = finalSide;
         if (this.name == "dice2") diceGame.dice2Face = finalSide;
 
+        //Set total to both dice values
         diceGame.diceTotal = diceGame.dice1Face + diceGame.dice2Face;
         diceGame.shouldCheckBet = true;
         Debug.Log(theSide);

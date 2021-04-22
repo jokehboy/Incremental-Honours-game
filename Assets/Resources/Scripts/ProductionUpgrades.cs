@@ -56,7 +56,7 @@ public class ProductionUpgrades : MonoBehaviour
         upgradeDesc = new[]
         {
             $"+100 product",
-            $"+{gameController.UpdateNotation((gameController.data.productEarnedPerSec_base_amount * gameController.data.production_multiplier), "F3")} product per second",
+            $"+{gameController.UpdateNotation((gameController.data.productEarnedPerSec_base_amount) * (gameController.data.production_multiplier + (0.01 * gameController.data.production_upg_lvl5)), "F3")} product per second",
             $"Clicks are 5% more effective",
             $"Gain 10% more coins per second",
             $"Production is +1.01x better",
@@ -66,7 +66,7 @@ public class ProductionUpgrades : MonoBehaviour
 
         for (int i = 0; i < costText.Length; i++)
         {
-            if (i == 0) { costText[i].text = $"{costs[i]} coins"; }
+            if (i == 0) { costText[i].text = $"{gameController.UpdateNotation(costs[i], "F3")} coins"; }
             else costText[i].text = $"{gameController.UpdateNotation(costs[i], "F3")} product";
 
             levelText[i].text = $"{levels[i]}";
